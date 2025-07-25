@@ -2,7 +2,7 @@
 //  BetterRestApp.swift
 //  BetterRest
 //
-//  Created by Zakee Tanksley on 7/16/25.
+//  Created by Wintersolid Studios on 7/16/25.
 //
 
 import SwiftUI
