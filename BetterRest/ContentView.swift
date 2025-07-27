@@ -13,7 +13,7 @@ struct ContentView: View {
   @State private var coffeeAmount = 1
   
   var coloredSleepAmountValues: some View {
-         Text("\(Int(sleepAmount))")
+    Text("\(sleepAmount.formatted())")
              .foregroundColor(sleepAmount < 7 ? .blue : .red)
      }
   var coloredcoffeeAmountValues: some View{
@@ -25,22 +25,31 @@ struct ContentView: View {
       VStack(spacing: 30){
         Text("When do you want to wake up")
           .font(.headline)
-        DatePicker("Pick time to sleep:", selection: $wakeUp,displayedComponents: .hourAndMinute).padding()
+        Text("Pick time to sleep:").font(.title)
+        DatePicker("Pick time to sleep:", selection: $wakeUp,displayedComponents:.hourAndMinute).labelsHidden()
+          
         
         Stepper(value: $sleepAmount, in: 1...12, step: 1) {
           HStack {
-           Text("How many hours of sleep:")
+            Text("How many hours of sleep:").font(.title2)
             coloredSleepAmountValues
           }.padding()
         }
         
         Stepper(value: $coffeeAmount, in: 1...12, step: 1) {
           HStack {
-            Text("How many cups of coffee:")
+            Text("How many cups of coffee:").font(.title2)
             coloredcoffeeAmountValues
           }.padding()
         }
+        Button("Calculate") {
+          
+        }.font(.title)
+          .foregroundStyle(.blue)
+          .buttonStyle(.bordered)
+          .buttonBorderShape(.capsule).tint(.blue)
       }
+      
     }
   }
 }
