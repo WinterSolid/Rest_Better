@@ -75,7 +75,14 @@ struct ContentView: View {
     }
   }
   func calculateSleepTime() {
-    // TODO: set up config for MLModelConfig
+    do {
+      //config object that holds runtime params for Core ML model.
+      let config = MLModelConfiguration()
+      let model = try SleepCalculator(configuration: config)
+      
+    } catch  {
+      print("Error: Data unvailable")
+    }
     
   }
 }
