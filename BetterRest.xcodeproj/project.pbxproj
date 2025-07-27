@@ -29,9 +29,22 @@
 		3A1546232E2816DC00ED4FD0 /* BetterRestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BetterRestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		3A15470E2E35BDA300ED4FD0 /* Exceptions for "BetterRest" folder in "BetterRestTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SleepCalculator.mlmodel,
+			);
+			target = 3A1546182E2816DC00ED4FD0 /* BetterRestTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		3A15460E2E2816D400ED4FD0 /* BetterRest */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				3A15470E2E35BDA300ED4FD0 /* Exceptions for "BetterRest" folder in "BetterRestTests" target */,
+			);
 			path = BetterRest;
 			sourceTree = "<group>";
 		};

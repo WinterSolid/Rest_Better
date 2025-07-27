@@ -5,6 +5,7 @@
 //  Created by Wintersolid Studios on 7/16/25.
 //
 
+import CoreML
 import SwiftUI
 
 struct ContentView: View {
@@ -74,7 +75,7 @@ struct ContentView: View {
     }
   }
   func calculateSleepTime() {
-    // TODO: Calculations
+    // TODO: set up config for MLModelConfig
     
   }
 }
