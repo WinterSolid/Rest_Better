@@ -14,8 +14,8 @@ struct ContentView: View {
   
   var coloredSleepAmountValues: some View {
     Text("\(sleepAmount.formatted())")
-             .foregroundColor(sleepAmount < 7 ? .blue : .red)
-     }
+      .foregroundColor(sleepAmount < 7 ? .blue : .red)
+  }
   var coloredcoffeeAmountValues: some View{
     Text("\(coffeeAmount)").foregroundStyle(coffeeAmount < 3 ? .blue : .orange )
   }
@@ -23,11 +23,12 @@ struct ContentView: View {
   var body: some View {
     NavigationStack {
       VStack(spacing: 30){
+        Spacer()
         Text("When do you want to wake up")
           .font(.headline)
         Text("Pick time to sleep:").font(.title)
         DatePicker("Pick time to sleep:", selection: $wakeUp,displayedComponents:.hourAndMinute).labelsHidden()
-          
+        
         
         Stepper(value: $sleepAmount, in: 1...12, step: 1) {
           HStack {
@@ -42,15 +43,24 @@ struct ContentView: View {
             coloredcoffeeAmountValues
           }.padding()
         }
-        Button("Calculate") {
-          
-        }.font(.title)
-          .foregroundStyle(.blue)
-          .buttonStyle(.bordered)
-          .buttonBorderShape(.capsule).tint(.blue)
+        Spacer()
+        Button(action: calculateSleepTime) {
+          Text("Calculate")
+        }
+        .font(.title)
+        .foregroundStyle(.green)
+        .buttonStyle(.bordered)
+        .buttonBorderShape(.capsule)
+        .tint(.green)
+        
+        Spacer()
       }
-      
+      .navigationTitle("BetterRest").navigationBarTitleDisplayMode(.inline)
     }
+  }
+  func calculateSleepTime() {
+    // TODO: Calculations
+    
   }
 }
 
