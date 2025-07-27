@@ -16,13 +16,13 @@ struct ContentView: View {
     Text("\(sleepAmount.formatted())")
       .font(.title)
       .fontWeight(.semibold)
-      .foregroundColor(sleepAmount < 7 ? .blue : .orange)
+      .foregroundColor(.blue)
   }
   var coloredcoffeeAmountValues: some View{
     Text("\(coffeeAmount)")
       .font(.title)
       .fontWeight(.semibold)
-      .foregroundStyle(coffeeAmount < 4 ? .blue : .orange)
+      .foregroundStyle(coffeeAmount < 4 ? .white : .orange)
   }
   
   var body: some View {
@@ -34,31 +34,35 @@ struct ContentView: View {
           
           Spacer()
           
-          Text("When do you want to wake up")
-            .font(.headline)
           Text("Pick time to sleep:").font(.title)
           
-          DatePicker("Pick time to sleep:", selection: $wakeUp,displayedComponents:.hourAndMinute).labelsHidden()
+          DatePicker("Pick time to sleep:", selection: $wakeUp,displayedComponents:.hourAndMinute).labelsHidden().accessibilityIdentifier("WakeUpPicker")
           
           Stepper(value: $sleepAmount, in: 1...12, step: 1) {
             
             HStack {
               Text("Sleep # of hours:")
-                .font(.title2).foregroundStyle(.white)
+                .font(.title2)
+                .fontWeight(.thin)
+                .foregroundStyle(.white)
               coloredSleepAmountValues
             }
           }
           .padding()
+          .accessibilityIdentifier("SleepStepper")
           
           Stepper(value: $coffeeAmount, in: 1...12, step: 1) {
             HStack {
               Text("    Coffee cups:")
-                .font(.title2).foregroundStyle(.white)
+                .font(.title2)
+                .fontWeight(.thin)
+                .foregroundStyle(.white)
               
               coloredcoffeeAmountValues
             }
           }
           .padding()
+          .accessibilityIdentifier("SleepStepper")
           
           Spacer()
           
@@ -71,6 +75,7 @@ struct ContentView: View {
           .buttonStyle(.borderedProminent)
           .buttonBorderShape(.capsule).shadow(color: .gray,radius: 30)
           .tint(.green)
+          .accessibilityIdentifier("CalculateButton")
           
           Spacer()
         }
@@ -83,7 +88,7 @@ struct ContentView: View {
     do {
       // config object that holds runtime params for Core ML model.
       let config = MLModelConfiguration()
-      let model = try SleepCalculator(configuration: config)
+      let model = try SleepCalculatorModel(configuration: config)
       let components = Calendar.current.dateComponents([.hour,.minute], from: wakeUp)
       
       let hour = (components.hour ?? 0) * 60 * 60 // mins * secs
