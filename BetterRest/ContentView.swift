@@ -1,7 +1,6 @@
 //
 //  ContentView.swift
 //  BetterRest
-//
 //  Created by Wintersolid Studios on 7/16/25.
 //
 
@@ -15,14 +14,14 @@ struct ContentView: View {
   
   var coloredSleepAmountValues: some View {
     Text("\(sleepAmount.formatted())")
-      .font(.title2)
-      .fontWeight(.bold)
-      .foregroundColor(sleepAmount < 7 ? .blue : .red)
+      .font(.title)
+      .fontWeight(.semibold)
+      .foregroundColor(sleepAmount < 7 ? .blue : .orange)
   }
   var coloredcoffeeAmountValues: some View{
     Text("\(coffeeAmount)")
-      .font(.title2)
-      .fontWeight(.bold)
+      .font(.title)
+      .fontWeight(.semibold)
       .foregroundStyle(coffeeAmount < 4 ? .blue : .orange)
   }
   
@@ -30,6 +29,7 @@ struct ContentView: View {
     NavigationStack {
       ZStack{
         Color.gray.opacity(0.2)
+        Image("dreamer").resizable().frame(width:400,height:300)
         VStack(spacing: 30){
           
           Spacer()
@@ -44,28 +44,32 @@ struct ContentView: View {
             
             HStack {
               Text("Sleep # of hours:")
-                .font(.title3)
+                .font(.title2).foregroundStyle(.white)
               coloredSleepAmountValues
-            }.padding()
+            }
           }
+          .padding()
           
           Stepper(value: $coffeeAmount, in: 1...12, step: 1) {
             HStack {
-              Text("Coffee cups drank today:")
-                .font(.title3)
+              Text("    Coffee cups:")
+                .font(.title2).foregroundStyle(.white)
+              
               coloredcoffeeAmountValues
-            }.padding()
+            }
           }
+          .padding()
           
           Spacer()
           
           Button(action: calculateSleepTime) {
             Text("Calculate")
           }
-          .font(.title)
-          .foregroundStyle(.green)
-          .buttonStyle(.bordered)
-          .buttonBorderShape(.capsule)
+          .font(.largeTitle)
+          .fontWeight(.bold)
+          .foregroundStyle(.white)
+          .buttonStyle(.borderedProminent)
+          .buttonBorderShape(.capsule).shadow(color: .gray,radius: 30)
           .tint(.green)
           
           Spacer()
@@ -74,16 +78,27 @@ struct ContentView: View {
       }
     }
   }
+  
   func calculateSleepTime() {
     do {
-      //config object that holds runtime params for Core ML model.
+      // config object that holds runtime params for Core ML model.
       let config = MLModelConfiguration()
       let model = try SleepCalculator(configuration: config)
+      let components = Calendar.current.dateComponents([.hour,.minute], from: wakeUp)
+      
+      let hour = (components.hour ?? 0) * 60 * 60 // mins * secs
+      let minute = (components.minute ?? 0) * 60 // * secs
+      
+      // call prediction model
+      let prediction = try model.prediction(
+        wake: Double(hour + minute),
+        estimatedSleep: Double(sleepAmount),
+        coffee: Double(coffeeAmount)
+      )
       
     } catch  {
       print("Error: Data unvailable")
     }
-    
   }
 }
 
