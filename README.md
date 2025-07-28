@@ -1,6 +1,6 @@
-# BetterRest
+# RestBetter
 
-BetterRest is a SwiftUI iOS application that helps users calculate their ideal bedtime based on desired wake-up time, desired sleep amount, and daily coffee intake. It uses a machine learning model to recommend the optimal time to go to bed for a well-rested day.
+RestBetter is a SwiftUI iOS application that helps users calculate their ideal bedtime based on desired wake-up time, desired sleep amount, and daily coffee intake. It uses a machine learning model to recommend the optimal time to go to bed for a well-rested day.
 
 ## Features
 
