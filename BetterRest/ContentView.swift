@@ -9,13 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
   @State private var sleepAmount = 8.0
-  @State private var wakeUp = Date.now
+  @State private var wakeUp = defaultWakeUp
   @State private var coffeeAmount = 1
   @State private var sleepPredict: String?
   @State private var alertTitle = ""
   @State private var alertMsg = ""
   @State private var alertShown = false
   
+  static var defaultWakeUp: Date {
+    var components = DateComponents()
+    components.hour = 7
+    components.minute = 0
+    return Calendar.current.date(from: components) ?? .now
+  }
   
   
   var coloredSleepAmountValues: some View {
@@ -74,7 +80,7 @@ struct ContentView: View {
             Text("Advise to Sleep at: ").font(.title2).fontWeight(.light)
             Text("\(sleepPredict ?? " ?")" ).font(.largeTitle).foregroundStyle(.yellow).fontWeight(.semibold)
           }
-        
+          
           
           Spacer()
           
@@ -91,7 +97,7 @@ struct ContentView: View {
             Button("close"){}
           } message: {
             Text(alertMsg)
-          
+            
           }
           
           Spacer()
@@ -117,8 +123,8 @@ struct ContentView: View {
         estimatedSleep: Double(sleepAmount),
         coffee: Double(coffeeAmount)
       )
-     let sleepTime = wakeUp - TimeInterval(prediction.actualSleep)
-     sleepPredict = sleepTime.formatted(date: .omitted, time: .shortened)
+      let sleepTime = wakeUp - TimeInterval(prediction.actualSleep)
+      sleepPredict = sleepTime.formatted(date: .omitted, time: .shortened)
       
       
     } catch  {
@@ -133,10 +139,11 @@ struct ContentView: View {
 
 
 #Preview("Light Mode") {
-        ContentView()
-            .preferredColorScheme(.light)
+  ContentView()
+    .preferredColorScheme(.light)
 }
+
 #Preview ("Dark Mode"){
   ContentView()
-      .preferredColorScheme(.dark)
+    .preferredColorScheme(.dark)
 }
