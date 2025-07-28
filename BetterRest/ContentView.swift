@@ -34,20 +34,20 @@ struct ContentView: View {
   var body: some View {
     NavigationStack {
       ZStack{
-        Color.gray.opacity(0.2)
+        Color.gray.opacity(0.5)
         Image("dreamer").resizable().frame(width:400,height:300)
         VStack(spacing: 30){
           
           Spacer()
           
-          Text("Pick time to sleep:").font(.title)
+          Text("Pick time to Awaken:").font(.title)
           
-          DatePicker("Pick time to sleep:", selection: $wakeUp,displayedComponents:.hourAndMinute).labelsHidden().accessibilityIdentifier("WakeUpPicker")
+          DatePicker("Pick time to Awaken", selection: $wakeUp,displayedComponents:.hourAndMinute).labelsHidden().accessibilityIdentifier("WakeUpPicker")
           
           Stepper(value: $sleepAmount, in: 1...12, step: 0.5) {
             
             HStack {
-              Text("Sleep # of hours:")
+              Text("Sleep atleast #hours:")
                 .font(.title2)
                 .fontWeight(.thin)
                 .foregroundStyle(.white)
@@ -59,7 +59,7 @@ struct ContentView: View {
           
           Stepper(value: $coffeeAmount, in: 1...12, step: 1) {
             HStack {
-              Text("    Coffee cups:")
+              Text("    Coffee #cups:")
                 .font(.title2)
                 .fontWeight(.thin)
                 .foregroundStyle(.white)
@@ -132,6 +132,11 @@ struct ContentView: View {
 
 
 
-#Preview {
+#Preview("Light Mode") {
+        ContentView()
+            .preferredColorScheme(.light)
+}
+#Preview ("Dark Mode"){
   ContentView()
+      .preferredColorScheme(.dark)
 }
