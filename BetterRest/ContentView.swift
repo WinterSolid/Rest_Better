@@ -11,7 +11,12 @@ struct ContentView: View {
   @State private var sleepAmount = 8.0
   @State private var wakeUp = Date.now
   @State private var coffeeAmount = 1
-  @State private var predictions = 0.0
+  @State private var sleepPredict: String?
+  @State private var alertTitle = ""
+  @State private var alertMsg = ""
+  @State private var alertShown = false
+  
+  
   
   var coloredSleepAmountValues: some View {
     Text("\(sleepAmount.formatted())")
@@ -66,8 +71,8 @@ struct ContentView: View {
           .accessibilityIdentifier("SleepStepper")
           
           VStack {
-            Text("Best to Sleep").font(.title2).fontWeight(.light)
-            Text("\(predictions,specifier: "%.2f") hours" ).font(.title3).fontWeight(.semibold)
+            Text("Advise to Sleep at: ").font(.title2).fontWeight(.light)
+            Text("\(sleepPredict ?? " ?")" ).font(.largeTitle).foregroundStyle(.yellow).fontWeight(.semibold)
           }
         
           
@@ -82,7 +87,12 @@ struct ContentView: View {
           .buttonStyle(.borderedProminent)
           .buttonBorderShape(.capsule).shadow(color: .gray,radius: 30)
           .tint(.green)
-          .accessibilityIdentifier("CalculateButton")
+          .accessibilityIdentifier("CalculateButton").alert(alertTitle, isPresented: $alertShown){
+            Button("close"){}
+          } message: {
+            Text(alertMsg)
+          
+          }
           
           Spacer()
         }
@@ -107,9 +117,14 @@ struct ContentView: View {
         estimatedSleep: Double(sleepAmount),
         coffee: Double(coffeeAmount)
       )
-      predictions = (prediction.actualSleep)
+     let sleepTime = wakeUp - TimeInterval(prediction.actualSleep)
+     sleepPredict = sleepTime.formatted(date: .omitted, time: .shortened)
+      
+      
     } catch  {
-      print("Error: Data unvailable")
+      alertTitle = "Error:"
+      alertMsg = "Data unvailable"
+      alertShown = true
     }
   }
 }

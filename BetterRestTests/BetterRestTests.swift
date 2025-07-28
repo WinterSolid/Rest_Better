@@ -4,14 +4,33 @@
 //
 //  Created by Zakee Tanksley on 7/16/25.
 //
+import XCTest
+@testable import BetterRest  // This allows tests to access internal methods and types
 
-import Testing
-@testable import BetterRest
+final class BetterRestLogicTests: XCTestCase {
 
-struct BetterRestTests {
+    func testBedtimeCalculation() throws {
+        // Arrange
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        guard let testWakeUp = formatter.date(from: "07:00") else {
+            XCTFail("Invalid test wake-up date format")
+            return
+        }
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+        let sleepAmount = 8.0
+        let coffeeAmount = 1
+
+        // Act
+        let calculatedBedtime = try SleepCalculatorHelper.calculateBedtime(wakeUp: testWakeUp, sleepAmount: sleepAmount, coffeeAmount: coffeeAmount)
+
+        // Assert
+        XCTAssertNotNil(calculatedBedtime)
+
+        let expectedBedtime = Calendar.current.date(byAdding: .hour, value: -8, to: testWakeUp)
+
+        XCTAssertEqual(Calendar.current.component(.hour, from: calculatedBedtime),
+                       Calendar.current.component(.hour, from: expectedBedtime!),
+                       "Calculated bedtime hour should match expected hour")
     }
-
 }
