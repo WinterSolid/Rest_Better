@@ -10,6 +10,12 @@ BetterRest is a SwiftUI iOS application that helps users calculate their ideal b
 - Calculate your recommended bedtime using a CoreML-powered prediction model.
 - User-friendly SwiftUI interface with immediate feedback.
 
+ ## Images
+<img width="232" height="387" alt="br1" src="https://github.com/user-attachments/assets/adda4995-ba7b-4dab-aa26-3751e36d35bb" />
+<img width="227" height="394" alt="br2" src="https://github.com/user-attachments/assets/b62293e2-22ec-42ff-a240-60a710d98218" />
+<img width="213" height="391" alt="br3" src="https://github.com/user-attachments/assets/76826cf6-e018-4493-beab-a32808dbcd97" />
+
+
 ## Technologies Used
 
 - SwiftUI (UI framework)
