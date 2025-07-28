@@ -11,6 +11,7 @@ struct ContentView: View {
   @State private var sleepAmount = 8.0
   @State private var wakeUp = Date.now
   @State private var coffeeAmount = 1
+  @State private var predictions = 0.0
   
   var coloredSleepAmountValues: some View {
     Text("\(sleepAmount.formatted())")
@@ -38,7 +39,7 @@ struct ContentView: View {
           
           DatePicker("Pick time to sleep:", selection: $wakeUp,displayedComponents:.hourAndMinute).labelsHidden().accessibilityIdentifier("WakeUpPicker")
           
-          Stepper(value: $sleepAmount, in: 1...12, step: 1) {
+          Stepper(value: $sleepAmount, in: 1...12, step: 0.5) {
             
             HStack {
               Text("Sleep # of hours:")
@@ -63,6 +64,12 @@ struct ContentView: View {
           }
           .padding()
           .accessibilityIdentifier("SleepStepper")
+          
+          VStack {
+            Text("Best to Sleep").font(.title2).fontWeight(.light)
+            Text("\(predictions,specifier: "%.2f") hours" ).font(.title3).fontWeight(.semibold)
+          }
+        
           
           Spacer()
           
@@ -100,7 +107,7 @@ struct ContentView: View {
         estimatedSleep: Double(sleepAmount),
         coffee: Double(coffeeAmount)
       )
-      
+      predictions = (prediction.actualSleep)
     } catch  {
       print("Error: Data unvailable")
     }
