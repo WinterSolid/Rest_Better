@@ -21,6 +21,20 @@
 			remoteGlobalIDString = 3A15460B2E2816D400ED4FD0;
 			remoteInfo = BetterRest;
 		};
+		3A1547742E394DA400ED4FD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A1546042E2816D400ED4FD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A1546182E2816DC00ED4FD0;
+			remoteInfo = RestBetterTests;
+		};
+		3A1547762E394DAB00ED4FD0 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3A1546042E2816D400ED4FD0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3A1546222E2816DC00ED4FD0;
+			remoteInfo = RestBetterUITests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -34,18 +48,9 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				model/SleepCalculatorModel.mlmodel,
-				RestBetterViewModel.swift,
-				SleepCalculatorHelper.swift,
+				viewModel/RestBetterViewModel.swift,
 			);
 			target = 3A1546182E2816DC00ED4FD0 /* RestBetterTests */;
-		};
-		3A1547172E36D73000ED4FD0 /* Exceptions for "RestBetter" folder in "RestBetterUITests" target */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				RestBetterViewModel.swift,
-				SleepCalculatorHelper.swift,
-			);
-			target = 3A1546222E2816DC00ED4FD0 /* RestBetterUITests */;
 		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
@@ -54,7 +59,6 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				3A15470E2E35BDA300ED4FD0 /* Exceptions for "RestBetter" folder in "RestBetterTests" target */,
-				3A1547172E36D73000ED4FD0 /* Exceptions for "RestBetter" folder in "RestBetterUITests" target */,
 			);
 			path = RestBetter;
 			sourceTree = "<group>";
@@ -130,6 +134,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				3A1547772E394DAB00ED4FD0 /* PBXTargetDependency */,
+				3A1547752E394DA400ED4FD0 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				3A15460E2E2816D400ED4FD0 /* RestBetter */,
@@ -289,6 +295,16 @@
 			isa = PBXTargetDependency;
 			target = 3A15460B2E2816D400ED4FD0 /* BetterRest */;
 			targetProxy = 3A1546242E2816DC00ED4FD0 /* PBXContainerItemProxy */;
+		};
+		3A1547752E394DA400ED4FD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A1546182E2816DC00ED4FD0 /* RestBetterTests */;
+			targetProxy = 3A1547742E394DA400ED4FD0 /* PBXContainerItemProxy */;
+		};
+		3A1547772E394DAB00ED4FD0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3A1546222E2816DC00ED4FD0 /* RestBetterUITests */;
+			targetProxy = 3A1547762E394DAB00ED4FD0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

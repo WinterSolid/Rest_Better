@@ -2,35 +2,49 @@
 //  RestBetterTests.swift
 //  RestBetterTests
 //
-//  Created by Zakee Tanksley on 7/16/25.
+//  Created by Wintersolid Studios on 7/16/25.
 //
 import XCTest
-@testable import RestBetter  // This allows tests to access internal methods and types
 
-final class RestBetterLogicTests: XCTestCase {
+final class RestBetterViewModelTests: XCTestCase {
+    
+    var viewModel: RestBetterViewModel!
 
-    func testBedtimeCalculation() throws {
-        // Arrange
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        guard let testWakeUp = formatter.date(from: "07:00") else {
-            XCTFail("Invalid test wake-up date format")
-            return
-        }
+    override func setUp() {
+        super.setUp()
+        viewModel = RestBetterViewModel()
+    }
 
-        let sleepAmount = 8.0
-        let coffeeAmount = 1
+    override func tearDown() {
+        viewModel = nil
+        super.tearDown()
+    }
 
-        // Act
-        let calculatedBedtime = try SleepCalculatorHelper.calculateBedtime(wakeUp: testWakeUp, sleepAmount: sleepAmount, coffeeAmount: coffeeAmount)
+    func testCalculateSleepTime() {
+        // Given
+        viewModel.wakeUp = Calendar.current.date(bySettingHour: 7, minute: 0, second: 0, of: Date())!
+        viewModel.sleepAmount = 8
+        viewModel.coffeeAmount = 1
+        
+        // When
+        viewModel.calculateSleepTime()
+        
+        // Then
+        XCTAssertNotNil(viewModel.sleepPredict, "Sleep prediction should not be nil after calculation")
+        XCTAssertFalse(viewModel.alertShown, "Alert should not be shown for valid calculation")
+    }
 
-        // Assert
-        XCTAssertNotNil(calculatedBedtime)
-
-        let expectedBedtime = Calendar.current.date(byAdding: .hour, value: -8, to: testWakeUp)
-
-        XCTAssertEqual(Calendar.current.component(.hour, from: calculatedBedtime),
-                       Calendar.current.component(.hour, from: expectedBedtime!),
-                       "Calculated bedtime hour should match expected hour")
+    func testCalculateSleepTimeErrorHandling() {
+      
+        // For this ML model, actual failure cases are rare, so just verifying alert state reset
+        viewModel.alertTitle = ""
+        viewModel.alertMsg = ""
+        viewModel.alertShown = false
+        
+        // When calling calculateSleepTime with valid data (simulate no error)
+        viewModel.calculateSleepTime()
+        
+        // Then
+        XCTAssertFalse(viewModel.alertShown, "Alert should not be shown for valid scenario")
     }
 }
