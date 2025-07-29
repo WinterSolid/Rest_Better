@@ -27,7 +27,7 @@ struct RestBetterView: View {
   var coloredSleepAmountValues: some View {
     Text("\(sleepAmount.formatted())")
       .font(.title)
-      .fontWeight(.semibold)  }
+    .fontWeight(.semibold)  }
   var coloredcoffeeAmountValues: some View{
     Text("          \(coffeeAmount)")
       .font(.title)
