@@ -1,6 +1,6 @@
-# RestBetter
+# Rest^Better
 
-RestBetter is a SwiftUI iOS application that helps users calculate their ideal bedtime based on desired wake-up time, desired sleep amount, and daily coffee intake. It uses a machine learning model to recommend the optimal time to go to bed for a well-rested day.
+Rest^Better is a SwiftUI iOS application that helps users calculate their ideal bedtime based on desired wake-up time, desired sleep amount, and daily coffee intake. It uses a machine learning model to recommend the optimal time to go to bed for a well-rested day.
 
 ## Features
 
@@ -11,12 +11,16 @@ RestBetter is a SwiftUI iOS application that helps users calculate their ideal b
 - User-friendly SwiftUI interface with immediate feedback.
 
  ## Images
-<img width="232" height="387" alt="br1" src="https://github.com/user-attachments/assets/adda4995-ba7b-4dab-aa26-3751e36d35bb" />
-<img width="227" height="394" alt="br2" src="https://github.com/user-attachments/assets/b62293e2-22ec-42ff-a240-60a710d98218" />
-<img width="213" height="391" alt="br3" src="https://github.com/user-attachments/assets/76826cf6-e018-4493-beab-a32808dbcd97" />
+<img width="213" height="389" alt="RB1" src="https://github.com/user-attachments/assets/52d10a99-9dba-4828-ba6c-fc8737fca35e" />
+<img width="213" height="389" alt="rb2" src="https://github.com/user-attachments/assets/4c0b8901-0f36-455b-aebb-93078e8e454a" />
+<img width="213" height="389" alt="rb3" src="https://github.com/user-attachments/assets/501f15fe-29b3-4892-8540-05981904ccbd" />
+<img width="213" height="389" alt="rb4" src="https://github.com/user-attachments/assets/b92b441e-9195-4895-938d-4d0a3ba332ba" />
 
 
-## Technologies Used
+![Uploading rb2.png…]()
+
+## Technologies Used![Uploading rb2.png…]()
+
 
 - SwiftUI (UI framework)
 - CoreML (Machine Learning model integration)
@@ -59,6 +63,7 @@ In jurisdictions that recognize copyright laws, the author or authors of this so
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-## Thanks
+## Thanks to Image Contribution
 
-Thanks, Photo by [Picworld _dreamer](https://unsplash.com/@iammdsahil?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash) on [Unsplash](https://unsplash.com/photos/blue-sky-with-stars-during-night-time-9uq_DG7djjc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash)
+Altered from an Original Image by [catalyststuff](https://www.freepik.com/free-vector/cute-koala-sleeping-tree-cartoon-animal-nature-icon-concept-isolated-flat-cartoon-style_11579989.htm) on Freepik
+
