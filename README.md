@@ -46,13 +46,6 @@ Rest^Better is a SwiftUI iOS application that helps users calculate their ideal 
 - The machine learning model provided is a simple regression model predicting sleep needs. It may not be medically accurate but serves as an educational tool.
 - This project is inspired by Paul Hudson's "Hacking with Swift" 100 Days of SwiftUI curriculum.
 
-## To-Do Improvements
-
-- Add persistent storage for user preferences.
-- Integrate HealthKit for more personalized recommendations.
-- Dark Mode UI adjustments.
-- Add animations and visual enhancements.
-
 ## License
 
 This is free and unencumbered software released into the public domain.
