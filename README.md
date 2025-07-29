@@ -17,9 +17,8 @@ Rest^Better is a SwiftUI iOS application that helps users calculate their ideal 
 <img width="213" height="389" alt="rb4" src="https://github.com/user-attachments/assets/b92b441e-9195-4895-938d-4d0a3ba332ba" />
 
 
-![Uploading rb2.png…]()
 
-## Technologies Used![Uploading rb2.png…]()
+## Technologies Used!
 
 
 - SwiftUI (UI framework)
