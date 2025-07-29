@@ -1,13 +1,13 @@
 //
-//  BetterRestUITests.swift
-//  BetterRestUITests
+//  RestBetterUITests.swift
+//  RestBetterUITests
 //
 //  Created by Zakee Tanksley on 7/16/25.
 //
 import XCTest
-@testable import BetterRest 
+@testable import RestBetter 
 
-final class BetterRestUITests: XCTestCase {
+final class RestBetterUITests: XCTestCase {
 
     let app = XCUIApplication()
 

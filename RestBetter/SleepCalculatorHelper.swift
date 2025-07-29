@@ -1,6 +1,6 @@
 //
 //  SleepCalculatorHelper.swift
-//  BetterRest
+//  RestBetter
 //
 //  Created by Wintersolid Studios on 7/27/25.
 //

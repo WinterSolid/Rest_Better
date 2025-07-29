@@ -1,13 +1,13 @@
 //
-//  BetterRestUITestsLaunchTests.swift
-//  BetterRestUITests
+//  RestBetterUITestsLaunchTests.swift
+//  RestBetterUITests
 //
 //  Created by Zakee Tanksley on 7/16/25.
 //
 
 import XCTest
 
-final class BetterRestUITestsLaunchTests: XCTestCase {
+final class RestBetterUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
-//  BetterRest
+//  RestBetterView.swift
+//  RestBetter
 //  Created by Wintersolid Studios on 7/16/25.
 //
 
 import CoreML
 import SwiftUI
 
-struct ContentView: View {
+struct RestBetterView: View {
   @State private var sleepAmount = 8.0
   @State private var wakeUp = defaultWakeUp
   @State private var coffeeAmount = 1
@@ -102,7 +102,7 @@ struct ContentView: View {
           
           Spacer()
         }
-        .navigationTitle("BetterRest").navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("RestBetter").navigationBarTitleDisplayMode(.inline)
       }
     }
   }
@@ -139,11 +139,11 @@ struct ContentView: View {
 
 
 #Preview("Light Mode") {
-  ContentView()
+  RestBetterView()
     .preferredColorScheme(.light)
 }
 
 #Preview ("Dark Mode"){
-  ContentView()
+  RestBetterView()
     .preferredColorScheme(.dark)
 }

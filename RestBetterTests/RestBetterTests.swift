@@ -1,13 +1,13 @@
 //
-//  BetterRestTests.swift
-//  BetterRestTests
+//  RestBetterTests.swift
+//  RestBetterTests
 //
 //  Created by Zakee Tanksley on 7/16/25.
 //
 import XCTest
-@testable import BetterRest  // This allows tests to access internal methods and types
+@testable import RestBetter  // This allows tests to access internal methods and types
 
-final class BetterRestLogicTests: XCTestCase {
+final class RestBetterLogicTests: XCTestCase {
 
     func testBedtimeCalculation() throws {
         // Arrange
