@@ -27,36 +27,39 @@ struct RestBetterView: View {
   var coloredSleepAmountValues: some View {
     Text("\(sleepAmount.formatted())")
       .font(.title)
-      .fontWeight(.semibold)
-      .foregroundColor(.blue)
-  }
+      .fontWeight(.semibold)  }
   var coloredcoffeeAmountValues: some View{
-    Text("\(coffeeAmount)")
+    Text("          \(coffeeAmount)")
       .font(.title)
       .fontWeight(.semibold)
-      .foregroundStyle(coffeeAmount < 4 ? .white : .orange)
   }
   
   var body: some View {
     NavigationStack {
       ZStack{
-        Color.gray.opacity(0.5)
-        Image("dreamer").resizable().frame(width:400,height:300)
-        VStack(spacing: 30){
+        Image("Drk-Koala-BG")
+          .resizable()
+          .frame(width:400,height: .infinity)
+          .opacity(0.5)
+        
+        VStack(){
+          Spacer()
+          Text("Pick time to Awaken:")
+            .font(.title)
+            .foregroundStyle(.white)
+          
+          DatePicker("Pick time to Awaken", selection: $wakeUp,displayedComponents:.hourAndMinute)
+            .labelsHidden()
+            .accessibilityIdentifier("WakeUpPicker")
           
           Spacer()
-          
-          Text("Pick time to Awaken:").font(.title)
-          
-          DatePicker("Pick time to Awaken", selection: $wakeUp,displayedComponents:.hourAndMinute).labelsHidden().accessibilityIdentifier("WakeUpPicker")
           
           Stepper(value: $sleepAmount, in: 1...12, step: 0.5) {
             
             HStack {
               Text("Sleep atleast #hours:")
                 .font(.title2)
-                .fontWeight(.thin)
-                .foregroundStyle(.white)
+                .fontWeight(.bold)
               coloredSleepAmountValues
             }
           }
@@ -67,20 +70,21 @@ struct RestBetterView: View {
             HStack {
               Text("    Coffee #cups:")
                 .font(.title2)
-                .fontWeight(.thin)
-                .foregroundStyle(.white)
-              
+                .fontWeight(.bold)
               coloredcoffeeAmountValues
             }
           }
           .padding()
           .accessibilityIdentifier("SleepStepper")
-          
-          VStack {
-            Text("Advise to Sleep at: ").font(.title2).fontWeight(.light)
-            Text("\(sleepPredict ?? " ?")" ).font(.largeTitle).foregroundStyle(.yellow).fontWeight(.semibold)
+          Spacer()
+          HStack {
+            Text("Advise to Sleep at: ")
+              .font(.title2)
+              .fontWeight(.bold)
+            Text("    \(sleepPredict ?? " ?")" )
+              .font(.largeTitle)
+              .fontWeight(.bold)
           }
-          
           
           Spacer()
           
@@ -91,18 +95,20 @@ struct RestBetterView: View {
           .fontWeight(.bold)
           .foregroundStyle(.white)
           .buttonStyle(.borderedProminent)
-          .buttonBorderShape(.capsule).shadow(color: .gray,radius: 30)
+          .buttonBorderShape(.capsule)
+          .shadow(color: .gray,radius: 30)
           .tint(.green)
-          .accessibilityIdentifier("CalculateButton").alert(alertTitle, isPresented: $alertShown){
+          .accessibilityIdentifier("CalculateButton")
+          .alert(alertTitle, isPresented: $alertShown){
             Button("close"){}
           } message: {
             Text(alertMsg)
             
           }
-          
           Spacer()
         }
-        .navigationTitle("RestBetter").navigationBarTitleDisplayMode(.inline)
+        .navigationTitle("Rest*Better")
+        .navigationBarTitleDisplayMode(.inline)
       }
     }
   }
